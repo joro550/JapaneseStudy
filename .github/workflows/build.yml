@@ -39,4 +39,4 @@ jobs:
         service: ${{ secrets.SERVICE_NAME }}
         project: ${{ secrets.PROJECT_ID }}
         region: europe-west4
-        service key: ${{ secrets.GCLOUD_AUTH }}
+        service key: ${{ secrets.GCR_DEVOPS_SERVICE_ACCOUNT_KEY }}
