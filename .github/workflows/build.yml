@@ -11,7 +11,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
     - uses: actions/checkout@v2
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
@@ -22,3 +24,13 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
+    
+
+    - name: Deploy service to Cloud Run
+      uses: stefda/action-cloud-run@v1.0
+      with:
+        image: gcr.io/${{ secrets.PROJECT_ID }}/jpstudy
+        service: ${{ secrets.SERVICE_NAME }}
+        project: ${{ secrets.PROJECT_ID }}
+        region: europe-west4
+        service key: ${{ secrets.GCLOUD_AUTH }}
