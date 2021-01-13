@@ -39,4 +39,5 @@ jobs:
         image: gcr.io/${{ secrets.PROJECT_ID }}/${{ secrets.SERVICE_NAME }}
         service: ${{ secrets.SERVICE_NAME }}
         credentials: ${{ secrets.GCR_DEVOPS_SERVICE_ACCOUNT_KEY }}
+        region: europe-west2
       
