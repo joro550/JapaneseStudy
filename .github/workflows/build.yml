@@ -15,11 +15,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-
     - uses: actions/checkout@v2
-
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
@@ -31,12 +28,14 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
     
-
-    - name: Deploy service to Cloud Run
-      uses: stefda/action-cloud-run@v1.0
+  publish:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - name: publish to gcloud
+      uses: GoogleCloudPlatform/github-actions/deploy-cloudrun@master
       with:
-        image: gcr.io/${{ secrets.PROJECT_ID }}/jpstudy
+        image: gcr.io/${{ secrets.PROJECT_ID }}/${{ secrets.SERVICE_NAME }}
         service: ${{ secrets.SERVICE_NAME }}
-        project: ${{ secrets.PROJECT_ID }}
-        region: europe-west2
-        service key: ${{ secrets.GCR_DEVOPS_SERVICE_ACCOUNT_KEY }}
+        credentials: ${{ secrets.GCR_DEVOPS_SERVICE_ACCOUNT_KEY }}
+      
