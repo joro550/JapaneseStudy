@@ -49,18 +49,18 @@ jobs:
 
     - name: Build
       run: |
-        docker build -t gcr.io/${{ secrets.GCP_PROJECT_ID }}/jpstudy:latest .
+        docker build -t gcr.io/${{ secrets.PROJECT_ID }}/jpstudy:latest .
 
     - name: Push
       run: |
-        docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/jpstudy:latest
+        docker push gcr.io/${{ secrets.PROJECT_ID }}/jpstudy:latest
 
     - name: Deploy
       run: |
         gcloud run deploy jpstudy \
         --region europe-west2 \
-        --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/jpstudy \
+        --image gcr.io/${{ secrets.PROJECT_ID }}/jpstudy \
         --platform managed \
         --allow-unauthenticated \
-        --project ${{ secrets.GCP_PROJECT_ID }}
+        --project ${{ secrets.PROJECT_ID }}
 
