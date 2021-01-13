@@ -34,7 +34,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: publish to gcloud
-      uses: GoogleCloudPlatform/github-actions/deploy-cloudrun@master
+      uses: google-github-actions/deploy-cloudrun@main
       with:
         image: gcr.io/${{ secrets.PROJECT_ID }}/${{ secrets.SERVICE_NAME }}
         service: ${{ secrets.SERVICE_NAME }}
