@@ -33,10 +33,10 @@ jobs:
     needs: build
     steps:
     - name: Checkout
-    - uses: actions/checkout@v2
+      uses: actions/checkout@v2
 
     - name: Setup GCP Service Account
-    - uses: google-github-actions/setup-gcloud@master
+      uses: google-github-actions/setup-gcloud@master
       with:
         version: 'latest'
         service_account_email: ${{ secrets.GCP_SA_EMAIL }}
@@ -44,19 +44,19 @@ jobs:
         export_default_credentials: true
 
     - name: Configure Docker
-    - run: |
+      run: |
         gcloud auth configure-docker
 
     - name: Build
-    - run: |
+      run: |
         docker build -t gcr.io/${{ secrets.GCP_PROJECT_ID }}/jpstudy:latest .
 
     - name: Push
-    - run: |
+      run: |
         docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/jpstudy:latest
 
     - name: Deploy
-    - run: |
+      run: |
         gcloud run deploy jpstudy \
         --region europe-west2 \
         --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/jpstudy \
