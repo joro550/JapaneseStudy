@@ -38,5 +38,5 @@ jobs:
         image: gcr.io/${{ secrets.PROJECT_ID }}/jpstudy
         service: ${{ secrets.SERVICE_NAME }}
         project: ${{ secrets.PROJECT_ID }}
-        region: europe-west4
+        region: europe-west2
         service key: ${{ secrets.GCR_DEVOPS_SERVICE_ACCOUNT_KEY }}
