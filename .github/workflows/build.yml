@@ -23,8 +23,13 @@ jobs:
         dotnet-version: 5.0.102
     - name: Restore dependencies
       run: dotnet restore
+      
     - name: Build
       run: dotnet build --no-restore
+      
+    - name: Set variables
+      run: dotnet user-secrets set "FirebaseConfig:ProjectId" "${{ secrets.PROJECT_ID }}"
+      
     - name: Test
       run: dotnet test --no-build --verbosity normal
     
