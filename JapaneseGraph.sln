@@ -4,6 +4,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JapaneseGraph", "JapaneseGr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JapaneseGraph.Tests", "JapaneseGraph.Tests\JapaneseGraph.Tests.csproj", "{672A4A96-9FD7-44B6-96A1-02DAC1C7A0EB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JapaneseGraphDataLoader", "JapaneseGraphDataLoader\JapaneseGraphDataLoader.csproj", "{9344D187-EEDC-4983-B3B6-28A7476FA176}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JapaneseGraph.Shared", "JapaneseGraph.Shared\JapaneseGraph.Shared.csproj", "{F381E88F-E527-4BC9-A625-C77B1AB77298}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +22,13 @@ Global
 		{672A4A96-9FD7-44B6-96A1-02DAC1C7A0EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{672A4A96-9FD7-44B6-96A1-02DAC1C7A0EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{672A4A96-9FD7-44B6-96A1-02DAC1C7A0EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9344D187-EEDC-4983-B3B6-28A7476FA176}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9344D187-EEDC-4983-B3B6-28A7476FA176}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9344D187-EEDC-4983-B3B6-28A7476FA176}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9344D187-EEDC-4983-B3B6-28A7476FA176}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F381E88F-E527-4BC9-A625-C77B1AB77298}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F381E88F-E527-4BC9-A625-C77B1AB77298}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F381E88F-E527-4BC9-A625-C77B1AB77298}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F381E88F-E527-4BC9-A625-C77B1AB77298}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

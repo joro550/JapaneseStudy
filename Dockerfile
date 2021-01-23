@@ -5,6 +5,7 @@ WORKDIR /app
 # Install production dependencies.
 # Copy csproj and restore as distinct layers.
 COPY JapaneseGraph/*.csproj ./
+COPY JapaneseGraph.Shared/*.csproj ./JapaneseGraph.Shared
 RUN dotnet restore
 
 # Copy local code to the container image.

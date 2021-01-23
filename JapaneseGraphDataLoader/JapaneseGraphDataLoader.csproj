@@ -4,12 +4,11 @@
         <TargetFramework>net5.0</TargetFramework>
 
         <IsPackable>false</IsPackable>
-      <UserSecretsId>c01f6dba-d021-488a-bedb-cc0ef4f27820</UserSecretsId>
+      <UserSecretsId>c4280163-0472-46fa-a731-e5a5f4c55a3f</UserSecretsId>
   </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="GraphQL.Client" Version="3.2.1" />
-        <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="5.0.2" />
+        <PackageReference Include="Google.Cloud.Firestore" Version="2.3.0" />
         <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
         <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="5.0.0" />
         <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="5.0.0" />
@@ -26,7 +25,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\JapaneseGraph\JapaneseGraph.csproj" />
+      <ProjectReference Include="..\JapaneseGraph.Shared\JapaneseGraph.Shared.csproj" />
     </ItemGroup>
 
 </Project>
