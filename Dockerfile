@@ -4,16 +4,17 @@ WORKDIR /app
 
 # Install production dependencies.
 # Copy csproj and restore as distinct layers.
-COPY JapaneseGraph/*.csproj ./
-COPY JapaneseGraph.Shared/*.csproj ./JapaneseGraph.Shared
-RUN dotnet restore
+COPY JapaneseGraph/*.csproj ./JapaneseGraph/
+COPY JapaneseGraph.Shared/*.csproj ./JapaneseGraph.Shared/
+RUN dotnet restore ./JapaneseGraph/
 
 # Copy local code to the container image.
-COPY JapaneseGraph/ ./
+COPY JapaneseGraph/ ./JapaneseGraph
+COPY JapaneseGraph.Shared/ ./JapaneseGraph.Shared
 WORKDIR /app
 
 # Build a release artifact.
-RUN dotnet publish -c Release -o out
+RUN dotnet publish -c Release -o out ./JapaneseGraph
 
 
 # Use Microsoft's official runtime .NET image.

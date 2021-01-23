@@ -13,8 +13,8 @@ namespace JapaneseGraph
 
         public static IHostBuilder CreateHostBuilder(string[] args)
         {
-            var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
-            var url = String.Concat("http://127.0.0.1:", port);
+            var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+            var url = String.Concat("http://0.0.0.0:", port);
 
             return Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
