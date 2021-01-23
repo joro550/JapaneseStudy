@@ -27,8 +27,11 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
       
-    - name: Set variables
-      run: dotnet user-secrets set "FirebaseConfig:ProjectId" "${{ secrets.PROJECT_ID }}"
+    - name: Set variables for tests
+      run: dotnet user-secrets set "FirebaseConfig:ProjectId" "${{ secrets.PROJECT_ID }}" --project /JapaneseGraph.Tests/
+      
+    - name: Set variables for migrations 
+      run: dotnet user-secrets set "FirebaseConfig:ProjectId" "${{ secrets.PROJECT_ID }}" --project /JapaneseGraphDataLoader/
       
     - name: Test
       run: dotnet test --no-build --verbosity normal
