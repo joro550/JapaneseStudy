@@ -13,7 +13,7 @@ namespace JapaneseGraphDataLoader
 {
     public class UnitTest1
     {
-        [Fact]
+        // [Fact]
         public async Task Test1()
         {
             var configuration = new ConfigurationBuilder()

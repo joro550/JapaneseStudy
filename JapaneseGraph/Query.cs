@@ -30,7 +30,6 @@ namespace JapaneseGraph
         public GetLevel(FirebaseFactory factory) 
             => _factory = factory;
 
-
         public async Task<IEnumerable<Radical>> Handle(GetRadicalRequest request, CancellationToken cancellationToken)
         {
             var store = await _factory.Build();

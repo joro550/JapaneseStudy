@@ -34,7 +34,13 @@ namespace JapaneseGraph
             }
             else
             {
-                firestoreDbBuilder = new FirestoreDbBuilder {ProjectId = _firebaseOptions.ProjectId};
+                
+                
+                firestoreDbBuilder = new FirestoreDbBuilder
+                {
+                    ProjectId = _firebaseOptions.ProjectId,
+                    
+                };
             }
             
             return await firestoreDbBuilder.BuildAsync();
