@@ -23,8 +23,16 @@ jobs:
         dotnet-version: 5.0.102
     - name: Restore dependencies
       run: dotnet restore
+      
     - name: Build
       run: dotnet build --no-restore
+      
+    - name: Set variables for tests
+      run: dotnet user-secrets set "FirebaseConfig:ProjectId" "${{ secrets.PROJECT_ID }}" --project ./JapaneseGraph.Tests/JapaneseGraph.Tests.csproj
+      
+    - name: Set variables for migrations 
+      run: dotnet user-secrets set "FirebaseConfig:ProjectId" "${{ secrets.PROJECT_ID }}" --project ./JapaneseGraphDataLoader/JapaneseGraphDataLoader.csproj
+      
     - name: Test
       run: dotnet test --no-build --verbosity normal
     
