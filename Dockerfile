@@ -1,5 +1,5 @@
 ﻿# Use Microsoft's official build .NET image.
-FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
+FROM mcr.microsoft.com/dotnet/sdk:5.0-alpine AS build
 WORKDIR /app
 
 # Install production dependencies.
