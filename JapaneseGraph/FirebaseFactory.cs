@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Google.Api.Gax;
 using Google.Cloud.Firestore;
 using JapaneseGraph.Shared;
@@ -26,8 +27,17 @@ namespace JapaneseGraph
         {
             var isDev = _hostEnvironment.IsDevelopment();
             _logger.LogInformation($"Is Dev: {isDev}");
-            if (!isDev) 
-                return await FirestoreDb.CreateAsync(_firebaseOptions.ProjectId);
+            if (!isDev)
+            {
+                try
+                {
+                    return await FirestoreDb.CreateAsync(_firebaseOptions.ProjectId);
+                }
+                catch (Exception e)
+                {
+                    _logger.LogError(e.Message, e);
+                }
+            }
             
             var firestoreDbBuilder = new FirestoreDbBuilder
             {
