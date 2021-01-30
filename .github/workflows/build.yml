@@ -74,5 +74,10 @@ jobs:
         
     - name: Env vars
       run: |
-        gcloud run services update jpstudy --set-env-vars "FirebaseConfig:ProjectId=${{ secrets.PROJECT_ID }}" --platform managed --region europe-west2 
+        gcloud run services update jpstudy \
+        --set-env-vars "FirebaseConfig:ProjectId=${{ secrets.PROJECT_ID }}" \
+        --platform managed \
+        --region europe-west2 \
+        --project ${{ secrets.PROJECT_ID }}
+         
 
