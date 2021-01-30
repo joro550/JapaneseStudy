@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using Grpc.Core.Logging;
+using Microsoft.Extensions.Logging;
 
 namespace JapaneseGraph
 {
@@ -29,9 +29,9 @@ namespace JapaneseGraph
     public class GetLevel : IRequestHandler<GetRadicalRequest, IEnumerable<Radical>>
     {
         private readonly FirebaseFactory _factory;
-        private readonly ILogger _logger;
+        private readonly ILogger<GetLevel> _logger;
 
-        public GetLevel(FirebaseFactory factory, ILogger logger)
+        public GetLevel(FirebaseFactory factory, ILogger<GetLevel> logger)
         {
             _factory = factory;
             _logger = logger;
@@ -39,19 +39,19 @@ namespace JapaneseGraph
 
         public async Task<IEnumerable<Radical>> Handle(GetRadicalRequest request, CancellationToken cancellationToken)
         {
-            _logger.Warning("Handling the request");
+            _logger.LogWarning("Handling the request");
             
             var store = await _factory.Build();
-            _logger.Warning("Factory has bee built");
+            _logger.LogWarning("Factory has bee built");
             
             var snapshot = await store.Collection("radicals").GetSnapshotAsync(cancellationToken);
             if(snapshot != null)
-                _logger.Warning("We got the snapshot");
+                _logger.LogWarning("We got the snapshot");
             
             var versions = snapshot.Documents.Select(document => document.ConvertTo<Shared.Radical>()).ToList();
             
             if(versions != null && versions.Any())
-                _logger.Warning("We got records");
+                _logger.LogWarning("We got records");
 
             return versions.Select(version => new Radical
                 {

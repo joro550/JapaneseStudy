@@ -22,6 +22,7 @@ namespace JapaneseGraph
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddLogging();
             services.Configure<FirebaseConfig>(
                 _configuration.GetSection(nameof(FirebaseConfig)));
             
@@ -39,7 +40,8 @@ namespace JapaneseGraph
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            
+            
             app.UseRouting()
                 .UseEndpoints(endpoints =>
                 {
