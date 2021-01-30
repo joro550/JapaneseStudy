@@ -15,9 +15,9 @@ namespace JapaneseGraphDataLoader.Levels
             await collection.AddAsync(new Radical
             {
                 Character = "日", 
-                Description = "This character represents the sun or days",
-                OnYomi = new[] {"か"},
-                KunYomi = new [] {"ひ"},
+                Description = "This characterじち represents the sun or days",
+                OnYomi = new[] {"にち", "じつ"},
+                KunYomi = new [] {"ひ", "か"},
                 Mnemonic = "",
                 Level = 1
             });

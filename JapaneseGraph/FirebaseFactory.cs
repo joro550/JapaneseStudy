@@ -22,27 +22,14 @@ namespace JapaneseGraph
 
         public async Task<FirestoreDb> Build()
         {
-            FirestoreDbBuilder firestoreDbBuilder;
+            if (!_hostEnvironment.IsDevelopment()) 
+                return await FirestoreDb.CreateAsync(_firebaseOptions.ProjectId);
             
-            if (_hostEnvironment.IsDevelopment())
+            var firestoreDbBuilder = new FirestoreDbBuilder
             {
-                firestoreDbBuilder = new FirestoreDbBuilder
-                {
-                    ProjectId = _firebaseOptions.ProjectId, 
-                    EmulatorDetection = EmulatorDetection.EmulatorOrProduction
-                };
-            }
-            else
-            {
-                
-                
-                firestoreDbBuilder = new FirestoreDbBuilder
-                {
-                    ProjectId = _firebaseOptions.ProjectId,
-                    
-                };
-            }
-            
+                ProjectId = _firebaseOptions.ProjectId, 
+                EmulatorDetection = EmulatorDetection.EmulatorOrProduction
+            };
             return await firestoreDbBuilder.BuildAsync();
         } 
     }
