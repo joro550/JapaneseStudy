@@ -31,7 +31,8 @@ namespace JapaneseGraph
             {
                 try
                 {
-                    return await FirestoreDb.CreateAsync();
+                    
+                    return await FirestoreDb.CreateAsync(_firebaseOptions.ProjectId);
                 }
                 catch (Exception e)
                 {
