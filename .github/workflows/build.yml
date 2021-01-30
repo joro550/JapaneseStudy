@@ -62,6 +62,10 @@ jobs:
     - name: Push
       run: |
         docker push gcr.io/${{ secrets.PROJECT_ID }}/jpstudy:latest
+        
+    - name: Env vars
+      run: |
+        gcloud run services update jpstudy --set-env-vars "FirebaseConfig:ProjectId=${{ secrets.PROJECT_ID }}"
 
     - name: Deploy
       run: |
