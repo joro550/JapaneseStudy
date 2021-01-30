@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using System;
+using MediatR;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -43,14 +44,15 @@ namespace JapaneseGraph
             
             var store = await _factory.Build();
             _logger.LogWarning($"Factory has been built, {store == null}");
-            
-            var snapshot = await store.Collection("radicals").GetSnapshotAsync(cancellationToken);
-            _logger.LogWarning($"IsSnapshot null, {snapshot == null}");
-            
-            var versions = snapshot.Documents.Select(document => document.ConvertTo<Shared.Radical>()).ToList();
-            _logger.LogWarning($"documents null, {versions == null} {versions.Any()}");
+            try
+            {
+                var snapshot = await store.Collection("radicals").GetSnapshotAsync(cancellationToken);
+                _logger.LogWarning($"IsSnapshot null, {snapshot == null}");
 
-            return versions.Select(version => new Radical
+                var versions = snapshot.Documents.Select(document => document.ConvertTo<Shared.Radical>()).ToList();
+                _logger.LogWarning($"documents null, {versions == null} {versions.Any()}");
+
+                return versions.Select(version => new Radical
                 {
                     Character = version.Character,
                     Description = version.Description,
@@ -58,6 +60,12 @@ namespace JapaneseGraph
                     KunYomi = version.KunYomi,
                     OnYomi = version.OnYomi
                 });
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return new Radical[0];
+            }
         }
     }
 
