@@ -62,10 +62,6 @@ jobs:
     - name: Push
       run: |
         docker push gcr.io/${{ secrets.PROJECT_ID }}/jpstudy:latest
-        
-    - name: Env vars
-      run: |
-        gcloud run services update jpstudy --set-env-vars "FirebaseConfig:ProjectId=${{ secrets.PROJECT_ID }}"
 
     - name: Deploy
       run: |
@@ -75,4 +71,10 @@ jobs:
         --platform managed \
         --allow-unauthenticated \
         --project ${{ secrets.PROJECT_ID }}
+        
+    - name: Env vars
+      run: |
+        gcloud run services update jpstudy \
+        --region europe-west2 \
+        --set-env-vars "FirebaseConfig:ProjectId=${{ secrets.PROJECT_ID }}"
 
