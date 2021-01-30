@@ -42,16 +42,13 @@ namespace JapaneseGraph
             _logger.LogWarning("Handling the request");
             
             var store = await _factory.Build();
-            _logger.LogWarning("Factory has bee built");
+            _logger.LogWarning($"Factory has been built, {store == null}");
             
             var snapshot = await store.Collection("radicals").GetSnapshotAsync(cancellationToken);
-            if(snapshot != null)
-                _logger.LogWarning("We got the snapshot");
+            _logger.LogWarning($"IsSnapshot null, {snapshot == null}");
             
             var versions = snapshot.Documents.Select(document => document.ConvertTo<Shared.Radical>()).ToList();
-            
-            if(versions != null && versions.Any())
-                _logger.LogWarning("We got records");
+            _logger.LogWarning($"documents null, {versions == null} {versions.Any()}");
 
             return versions.Select(version => new Radical
                 {
