@@ -31,8 +31,7 @@ namespace JapaneseGraph
             {
                 try
                 {
-                    _logger.LogInformation($"Project {_firebaseOptions.ProjectId}");
-                    return await FirestoreDb.CreateAsync(_firebaseOptions.ProjectId);
+                    return await FirestoreDb.CreateAsync();
                 }
                 catch (Exception e)
                 {
