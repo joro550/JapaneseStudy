@@ -15,7 +15,7 @@ WORKDIR "/src/JapaneseGraph"
 RUN dotnet build "JapaneseGraph.csproj" -c Release -o /app/build
 
 # Some wierd GRPC fix (https://github.com/GoogleCloudPlatform/google-cloud-dotnet-powerpack/issues/22)
-RUN apk update && apk install -y libc-dev
+RUN apk update && apk add libc-dev
 
 FROM build AS publish
 RUN dotnet publish "JapaneseGraph.csproj" -c Release -o /app/publish
