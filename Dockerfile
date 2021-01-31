@@ -14,14 +14,13 @@ COPY . .
 WORKDIR "/src/JapaneseGraph"
 RUN dotnet build "JapaneseGraph.csproj" -c Release -o /app/build
 
+# Some wierd GRPC fix (https://github.com/GoogleCloudPlatform/google-cloud-dotnet-powerpack/issues/22)
+RUN apt update && apt install -y libc-dev
+
 FROM build AS publish
 RUN dotnet publish "JapaneseGraph.csproj" -c Release -o /app/publish
 
 FROM base AS final
-
-# Some wierd GRPC fix (https://github.com/GoogleCloudPlatform/google-cloud-dotnet-powerpack/issues/22)
-RUN apt update && apt install -y libc-dev
-
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "JapaneseGraph.dll"]
