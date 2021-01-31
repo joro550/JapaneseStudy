@@ -8,7 +8,6 @@
 
     <ItemGroup>
       <PackageReference Include="Google.Cloud.Firestore" Version="2.3.0" />
-      <PackageReference Include="Grpc.Core" Version="2.35.0" />
       <PackageReference Include="HotChocolate.AspNetCore" Version="11.0.7" />
       <PackageReference Include="MediatR" Version="9.0.0" />
       <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
