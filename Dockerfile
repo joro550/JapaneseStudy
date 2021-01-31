@@ -23,7 +23,7 @@ WORKDIR /app
 COPY --from=build /app/out ./
 
 # Some wierd GRPC fix (https://github.com/GoogleCloudPlatform/google-cloud-dotnet-powerpack/issues/22)
-RUN apt update && apt install -y libc-dev
+# RUN apt update && apt install -y libc-dev
 
 # Run the web service on container startup.
 ENTRYPOINT ["dotnet", "JapaneseGraph.dll"]
